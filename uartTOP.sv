@@ -1,72 +1,72 @@
 `timescale 1ns / 1ps
 
 module uartTOP (
-    input wire clk,          // Reloj del sistema
-    input wire rst_n,        // Reset activo en bajo
-    input wire rx,           // Señal RX de UART (desde Arduino)
-    output reg [7:0] leds,   // LEDs de la FPGA
-    output wire tx,           // Señal TX de UART (hacia Arduino)
-	 input wire rts,   // Señal de "Request to Send" desde el Arduino
-    output reg cts    // Señal de "Clear to Send" hacia el Arduino
+    input wire clk,
+    input wire rst_n,
+    input wire rx,
+    output wire tx,
+    input wire rts,
+    output reg cts,
+    output reg [7:0] leds
 );
 
-    wire [7:0] uart_data_full_rx;  // Datos recibidos por UART (desde Arduino)
-    wire [3:0] uart_data_rx;       // Solo los 4 bits menos significativos de los datos recibidos
-    wire valid_rx;                 // Señal que indica que los datos recibidos son válidos
-    reg [7:0] data_to_send;        // Datos que la FPGA enviará a través de UART
-    reg send;                      // Señal para iniciar la transmisión
-    reg valid_rx_d;                // Registro para almacenar valid anterior
-wire busy_uart;
+    wire [7:0] rx_data;
+    wire rx_valid;
+    wire uart_busy;
 
-    // Instancia del receptor UART (RX)
-    uartRX uart_receiver (
+    reg [7:0] tx_data;
+    reg tx_start;
+    reg prev_rx_valid;
+    reg trigger_tx;
+
+  
+    uartRX receiver (
         .clk(clk),
         .rst_n(rst_n),
         .rx(rx),
-        .data(uart_data_full_rx),  // Dato completo de 8 bits recibido
-        .valid(valid_rx)           // Señal de datos válidos
+        .data(rx_data),
+        .valid(rx_valid)
     );
 
-	uartTX uart_transmitter (
-		 .clk(clk),
-		 .rst_n(rst_n),
-		 .data_in(data_to_send),
-		 .send(send),
-		 .tx(tx),
-		 .busy(busy_uart)  // ← conéctalo aquí
-	);
+    
+    uartTX transmitter (
+        .clk(clk),
+        .rst_n(rst_n),
+        .data_in(tx_data),
+        .send(tx_start),
+        .tx(tx),
+        .busy(uart_busy)
+    );
 
+  
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            leds <= 8'b0;
+            tx_data <= 8'b0;
+            tx_start <= 1'b0;
+            trigger_tx <= 1'b0;
+            prev_rx_valid <= 1'b0;
+            cts <= 1'b0;
+        end else begin
+            // Handshake
+            cts <= rts;
 
-	reg send_pending;
+            // byte recibido
+            prev_rx_valid <= rx_valid;
+            if (rx_valid && !prev_rx_valid) begin
+                leds <= rx_data;
+                tx_data <= rx_data;
+                trigger_tx <= 1'b1;
+            end
 
-	always @(posedge clk or negedge rst_n) begin
-		 if (!rst_n) begin
-			  leds <= 8'b0;
-			  data_to_send <= 8'b0;
-			  send <= 0;
-			  send_pending <= 0;
-			  valid_rx_d <= 0;
-		 end else begin
-			  valid_rx_d <= valid_rx;
-
-			  // Handshake
-			  cts <= rts;
-
-			  // Activar envío si llega un nuevo dato
-			  if (valid_rx && !valid_rx_d) begin
-					leds <= uart_data_full_rx;
-					data_to_send <= uart_data_full_rx;
-					send_pending <= 1;
-			  end
-
-			  // Manejo de señal 'send'
-			  if (send_pending && !busy_uart) begin
-					send <= 1;
-					send_pending <= 0;
-			  end else begin
-					send <= 0;
-			  end
-		 end
-	end
+            // enviar data
+            if (trigger_tx && !uart_busy) begin
+                tx_start <= 1'b1;
+                trigger_tx <= 1'b0;
+            end else begin
+                tx_start <= 1'b0;
+            end
+        end
+    end
 
 endmodule

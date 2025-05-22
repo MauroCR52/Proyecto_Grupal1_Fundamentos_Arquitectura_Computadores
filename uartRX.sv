@@ -1,36 +1,35 @@
 module uartRX (
-    input wire clk,          // Reloj del sistema
-    input wire rst_n,        // Reset activo en bajo
-    input wire rx,           // Señal de entrada RX (UART)
-    output reg [7:0] data,   // Datos recibidos (8 bits completos)
-    output reg valid         // Señal de validez
+    input wire clk,         
+    input wire rst_n,        
+    input wire rx,           
+    output reg [7:0] data,   
+    output reg valid         
 );
 
-    // Parámetros para UART
-    parameter CLK_FREQ = 50000000;  // Frecuencia de reloj (50 MHz)
-    parameter BAUD_RATE = 9600;     // Velocidad de UART
+    
+    parameter CLK_FREQ = 50000000;  
+    parameter BAUD_RATE = 9600;     
     localparam BAUD_TICK = CLK_FREQ / BAUD_RATE;  // 5208 ticks por cada bit a 9600 baudios
 
-    reg [15:0] baud_count;   // Contador para los ticks del baudrate
-    reg [3:0] bit_count;     // Contador de los bits recibidos
-    reg [7:0] shift_reg;     // Registro de desplazamiento para recibir los bits
-    reg [1:0] state, next_state;  // Estado y siguiente estado de la FSM
+    reg [15:0] baud_count;   
+    reg [3:0] bit_count;    
+    reg [7:0] shift_reg;     
+    reg [1:0] state, next_state;  
 
     localparam IDLE = 2'b00;
     localparam START = 2'b01;
     localparam DATA = 2'b10;
     localparam STOP = 2'b11;
 
-    // Bloque secuencial
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             state <= IDLE;
         end else begin
-            state <= next_state;  // El estado siguiente viene de la lógica combinacional
+            state <= next_state;  
         end
     end  
 
-    // Bloque secuencial para registros
+    // registros
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             baud_count <= 0;
@@ -79,9 +78,8 @@ module uartRX (
         end
     end
 
-    // Lógica combinacional para transición de estados
     always_comb begin
-        next_state = state;  // Por defecto, el próximo estado es el estado actual
+        next_state = state;  
         case (state)
             IDLE: begin
                 if (!rx) begin

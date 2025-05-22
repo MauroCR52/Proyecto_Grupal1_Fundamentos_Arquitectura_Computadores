@@ -65,16 +65,9 @@ set_location_assignment PIN_W15 -to rx
 set_location_assignment PIN_AK2 -to tx
 set_location_assignment PIN_Y16 -to rts
 set_location_assignment PIN_AK3 -to cts
-set_global_assignment -name SYSTEMVERILOG_FILE counter.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux_4to1.sv
-set_global_assignment -name SYSTEMVERILOG_FILE mux_2to1.sv
-set_global_assignment -name SYSTEMVERILOG_FILE d_ff_struct.sv
-set_global_assignment -name SYSTEMVERILOG_FILE comparator.sv
 set_global_assignment -name SYSTEMVERILOG_FILE uartTOP.sv
 set_global_assignment -name SYSTEMVERILOG_FILE uartRX.sv
 set_global_assignment -name SYSTEMVERILOG_FILE uartTX.sv
-set_global_assignment -name SYSTEMVERILOG_FILE tb_uartTOP.sv
-set_global_assignment -name SYSTEMVERILOG_FILE shift_register.sv
 set_global_assignment -name EDA_TEST_BENCH_FILE tb_uartTOP.sv -section_id tb_uartTOP
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
@@ -92,4 +85,7 @@ set_location_assignment PIN_AG25 -to leds[4]
 set_location_assignment PIN_AF25 -to leds[5]
 set_location_assignment PIN_AE24 -to leds[6]
 set_location_assignment PIN_AF24 -to leds[7]
+set_global_assignment -name SYSTEMVERILOG_FILE and_gate.sv
+set_global_assignment -name SYSTEMVERILOG_FILE not_gate.sv
+set_global_assignment -name SYSTEMVERILOG_FILE dff_custom.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
