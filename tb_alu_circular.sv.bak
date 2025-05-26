@@ -1,0 +1,72 @@
+`timescale 1ns/1ps
+
+module tb_alu_circular();
+
+    // Señales para multiplicador_circular
+    logic [1:0] A_mul;
+    logic [3:0] B_mul;
+    logic [3:0] Y_mul;
+    logic Z_mul, N_mul, C_mul, V_mul;
+
+    // Señales para restador_circular
+    logic [3:0] A_sub, B_sub;
+    logic [3:0] Y_sub;
+    logic Z_sub, N_sub, C_sub, V_sub;
+
+    // Instancia del multiplicador
+    multiplicador_circular uut_mul (
+        .A(A_mul),
+        .B(B_mul),
+        .Y(Y_mul),
+        .Z(Z_mul),
+        .N(N_mul),
+        .C(C_mul),
+        .V(V_mul)
+    );
+
+    // Instancia del restador
+    restador_circular uut_sub (
+        .A(A_sub),
+        .B(B_sub),
+        .Y(Y_sub),
+        .Z(Z_sub),
+        .N(N_sub),
+        .C(C_sub),
+        .V(V_sub)
+    );
+
+    // Proceso de prueba
+    initial begin
+        $display("===== TEST: Multiplicador Circular =====");
+        foreach (A_mul[i]) begin
+            foreach (B_mul[j]) begin
+                A_mul = i[1:0];
+                B_mul = j[3:0];
+                #1;
+                $display("A=%0d B=%0d | Y=%0d (%b) Z=%b N=%b C=%b V=%b",
+                         A_mul, B_mul, Y_mul, Y_mul, Z_mul, N_mul, C_mul, V_mul);
+            end
+        end
+
+        $display("\n===== TEST: Restador Circular =====");
+        A_sub = 4'd0; B_sub = 4'd0; #1;
+        $display("A=%0d - B=%0d = Y=%0d (%b) Z=%b N=%b C=%b V=%b",
+                  A_sub, B_sub, Y_sub, Y_sub, Z_sub, N_sub, C_sub, V_sub);
+
+        A_sub = 4'd5; B_sub = 4'd3; #1;
+        $display("A=%0d - B=%0d = Y=%0d (%b) Z=%b N=%b C=%b V=%b",
+                  A_sub, B_sub, Y_sub, Y_sub, Z_sub, N_sub, C_sub, V_sub);
+
+        A_sub = 4'd3; B_sub = 4'd5; #1;
+        $display("A=%0d - B=%0d = Y=%0d (%b) Z=%b N=%b C=%b V=%b",
+                  A_sub, B_sub, Y_sub, Y_sub, Z_sub, N_sub, C_sub, V_sub);
+
+        A_sub = 4'b1000; B_sub = 4'b1000; #1; // Caso límite con signo
+        $display("A=%b - B=%b = Y=%b Z=%b N=%b C=%b V=%b",
+                  A_sub, B_sub, Y_sub, Z_sub, N_sub, C_sub, V_sub);
+
+        $display("\nFin de pruebas.");
+        $finish;
+    end
+
+endmodule

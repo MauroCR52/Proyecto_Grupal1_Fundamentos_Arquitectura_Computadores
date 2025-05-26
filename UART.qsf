@@ -39,14 +39,14 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSXFC6D6F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY uartTOP
+set_global_assignment -name TOP_LEVEL_ENTITY alu_controladora
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.2
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:28:57  OCTOBER 16, 2024"
-set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name BOARD "Cyclone V SoC Development Kit"
-set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT NONE -section_id eda_simulation
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (SystemVerilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
@@ -69,16 +69,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE uartTOP.sv
 set_global_assignment -name SYSTEMVERILOG_FILE uartRX.sv
 set_global_assignment -name SYSTEMVERILOG_FILE uartTX.sv
 set_global_assignment -name EDA_TEST_BENCH_FILE tb_uartTOP.sv -section_id tb_uartTOP
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rts
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rx
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to tx
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to cts
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds
 set_location_assignment PIN_AC23 -to leds[2]
 set_location_assignment PIN_AD24 -to leds[3]
 set_location_assignment PIN_AG25 -to leds[4]
@@ -88,4 +78,47 @@ set_location_assignment PIN_AF24 -to leds[7]
 set_global_assignment -name SYSTEMVERILOG_FILE and_gate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE not_gate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE dff_custom.sv
+set_global_assignment -name SYSTEMVERILOG_FILE multiplicador_circular.sv
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH alu_controladora_tb -section_id eda_simulation
+set_global_assignment -name SYSTEMVERILOG_FILE restador_circular.sv
+set_global_assignment -name SYSTEMVERILOG_FILE tb_restador_circular.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_restador_circular -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_restador_circular
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_restador_circular -section_id tb_restador_circular
+set_global_assignment -name SYSTEMVERILOG_FILE and_circular_structural.sv
+set_global_assignment -name SYSTEMVERILOG_FILE tb_and_circular_structural.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_and_circular_structural -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_and_circular_structural
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_and_circular_structural -section_id tb_and_circular_structural
+set_global_assignment -name SYSTEMVERILOG_FILE xor_circular_flags.sv
+set_global_assignment -name SYSTEMVERILOG_FILE tb_xor_circular_flags.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_xor_circular_flags -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_xor_circular_flags
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_xor_circular_flags -section_id tb_xor_circular_flags
+set_global_assignment -name SYSTEMVERILOG_FILE alu_controladora.sv
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rts
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rx
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to tx
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to cts
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to leds
+set_global_assignment -name SYSTEMVERILOG_FILE tb_multiplicador_circular.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME tb_multiplicador_circular -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_multiplicador_circular
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_multiplicador_circular -section_id tb_multiplicador_circular
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE alu_controladora_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_restador_circular.sv -section_id tb_restador_circular
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_and_circular_structural.sv -section_id tb_and_circular_structural
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_xor_circular_flags.sv -section_id tb_xor_circular_flags
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_multiplicador_circular.sv -section_id tb_multiplicador_circular
+set_global_assignment -name EDA_TEST_BENCH_NAME alu_controladora_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id alu_controladora_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME alu_controladora_tb -section_id alu_controladora_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE alu_controladora_tb.sv -section_id alu_controladora_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

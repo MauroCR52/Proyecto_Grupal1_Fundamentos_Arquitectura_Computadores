@@ -1,0 +1,160 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/simulation/modelsim
+valu_controladora
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1748229977
+!i10b 1
+!s100 hT7ZmWIlNM3zSnDLQ:LFn0
+IJFQN`2RX;Ae<9jF6FRFJA1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 alu_controladora_sv_unit
+S1
+R0
+w1748229497
+8C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv
+FC:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1748229977.000000
+!s107 C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores|C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv|
+!i113 1
+Z6 o-sv -work work
+Z7 !s92 -sv -work work +incdir+C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores
+Z8 tCvgOpt 0
+valu_controladora_tb
+R1
+R2
+!i10b 1
+!s100 I_oHBAS1Ik2CXYB?oWJ3H3
+Ihkjb_bAJ=^G`e8j3z3GJ61
+R3
+!s105 alu_controladora_tb_sv_unit
+S1
+R0
+w1748229894
+8C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora_tb.sv
+FC:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora_tb.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores|C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora_tb.sv|
+!i113 1
+R6
+R7
+R8
+vand_circular_structural
+R1
+R2
+!i10b 1
+!s100 iUekE^VP13n7LIGNMiodd2
+IQmXE[6BFkVaJSWmogfT2K0
+R3
+!s105 and_circular_structural_sv_unit
+S1
+R0
+w1748221430
+8C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/and_circular_structural.sv
+FC:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/and_circular_structural.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/and_circular_structural.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores|C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/and_circular_structural.sv|
+!i113 1
+R6
+R7
+R8
+vmultiplicador_circular
+R1
+R2
+!i10b 1
+!s100 cd`aETPPMMFWh@b[Pdg1X0
+IE=8o;HO=HLRYj>DVE@eiO3
+R3
+!s105 multiplicador_circular_sv_unit
+S1
+R0
+w1748219776
+8C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/multiplicador_circular.sv
+FC:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/multiplicador_circular.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/multiplicador_circular.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores|C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/multiplicador_circular.sv|
+!i113 1
+R6
+R7
+R8
+vrestador_circular
+R1
+R2
+!i10b 1
+!s100 P:6KNA7NgWnJ9S3e2H4=61
+IAamenied3[1zVnF195:_?0
+R3
+!s105 restador_circular_sv_unit
+S1
+R0
+w1748219984
+8C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/restador_circular.sv
+FC:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/restador_circular.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/restador_circular.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores|C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/restador_circular.sv|
+!i113 1
+R6
+R7
+R8
+vxor_circular_flags
+R1
+R2
+!i10b 1
+!s100 FCR4@:eNND?Cn[[L_m1Z81
+IQQcd0X9KmeGM]TL3cdc<I3
+R3
+!s105 xor_circular_flags_sv_unit
+S1
+R0
+w1748224583
+8C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/xor_circular_flags.sv
+FC:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/xor_circular_flags.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/xor_circular_flags.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores|C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/xor_circular_flags.sv|
+!i113 1
+R6
+R7
+R8

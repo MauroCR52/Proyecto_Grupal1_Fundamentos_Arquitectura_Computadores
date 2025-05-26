@@ -1,0 +1,40 @@
+module multiplicador_circular (
+    input logic [1:0] A,     // Cantidad de rotación (2 bits)
+    input logic [3:0] B,     // Valor a rotar (4 bits)
+    output logic [3:0] Y     // Resultado del "multiplicador circular"
+);
+
+    // Rotaciones posibles de B
+    logic [3:0] rot0; // A = 00
+    logic [3:0] rot1; // A = 01
+    logic [3:0] rot2; // A = 10
+    logic [3:0] rot3; // A = 11
+
+    // Definimos las rotaciones manualmente
+    assign rot0 = B; // rotación de 0 posiciones
+    assign rot1 = {B[2:0], B[3]}; // rotación de 1 a la izquierda
+    assign rot2 = {B[1:0], B[3:2]}; // rotación de 2 a la izquierda
+    assign rot3 = {B[0], B[3:1]}; // rotación de 3 a la izquierda
+
+    // Selección manual del resultado sin usar if, case o ?:
+    assign Y[0] = (~A[1] & ~A[0] & rot0[0]) | 
+                  (~A[1] &  A[0] & rot1[0]) | 
+                  ( A[1] & ~A[0] & rot2[0]) | 
+                  ( A[1] &  A[0] & rot3[0]);
+
+    assign Y[1] = (~A[1] & ~A[0] & rot0[1]) | 
+                  (~A[1] &  A[0] & rot1[1]) | 
+                  ( A[1] & ~A[0] & rot2[1]) | 
+                  ( A[1] &  A[0] & rot3[1]);
+
+    assign Y[2] = (~A[1] & ~A[0] & rot0[2]) | 
+                  (~A[1] &  A[0] & rot1[2]) | 
+                  ( A[1] & ~A[0] & rot2[2]) | 
+                  ( A[1] &  A[0] & rot3[2]);
+
+    assign Y[3] = (~A[1] & ~A[0] & rot0[3]) | 
+                  (~A[1] &  A[0] & rot1[3]) | 
+                  ( A[1] & ~A[0] & rot2[3]) | 
+                  ( A[1] &  A[0] & rot3[3]);
+
+endmodule

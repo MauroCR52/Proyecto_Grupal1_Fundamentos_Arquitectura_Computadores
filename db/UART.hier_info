@@ -1,0 +1,143 @@
+|alu_controladora
+A[0] => A[0].IN4
+A[1] => A[1].IN4
+B[0] => B[0].IN4
+B[1] => B[1].IN4
+B[2] => B[2].IN4
+B[3] => B[3].IN4
+op[0] => sel_xor.IN0
+op[0] => sel_sub.IN0
+op[0] => sel_mult.IN0
+op[0] => sel_and.IN0
+op[1] => sel_mult.IN1
+op[1] => sel_sub.IN1
+op[1] => sel_xor.IN1
+op[1] => sel_and.IN1
+Y[0] << Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] << Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] << Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] << Y.DB_MAX_OUTPUT_PORT_TYPE
+Z << Z.DB_MAX_OUTPUT_PORT_TYPE
+N << N.DB_MAX_OUTPUT_PORT_TYPE
+C << C.DB_MAX_OUTPUT_PORT_TYPE
+V << V.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|alu_controladora|and_circular_structural:and_mod
+A[0] => carry.IN0
+A[0] => and_result.IN0
+A[0] => and_result.IN0
+A[1] => and_result.IN0
+A[1] => overflow.IN1
+A[1] => carry.IN1
+A[1] => and_result.IN0
+B[0] => and_result.IN1
+B[1] => and_result.IN1
+B[2] => and_result.IN1
+B[3] => and_result.IN1
+Y[0] <= and_result.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= and_result.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= and_result.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= and_result.DB_MAX_OUTPUT_PORT_TYPE
+zero <= zero.DB_MAX_OUTPUT_PORT_TYPE
+negativo <= and_result.DB_MAX_OUTPUT_PORT_TYPE
+carry <= carry.DB_MAX_OUTPUT_PORT_TYPE
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|alu_controladora|xor_circular_flags:xor_mod
+A[0] => Y.IN0
+A[0] => Y.IN0
+A[1] => Y.IN0
+A[1] => Y.IN0
+A[1] => V.IN0
+A[1] => C.DATAIN
+A[1] => V.IN0
+B[0] => Y.IN1
+B[1] => Y.IN1
+B[2] => Y.IN1
+B[3] => Y.IN1
+B[3] => V.IN1
+B[3] => V.IN1
+Y[0] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+N <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+C <= A[1].DB_MAX_OUTPUT_PORT_TYPE
+V <= V.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|alu_controladora|multiplicador_circular:mult_mod
+A[0] => Y.IN0
+A[0] => Y.IN0
+A[0] => Y.IN0
+A[0] => Equal0.IN1
+A[1] => Y.IN1
+A[1] => Y.IN1
+A[1] => Y.IN1
+A[1] => Equal0.IN0
+B[0] => Add0.IN5
+B[0] => Y.IN1
+B[0] => Y.IN1
+B[0] => Y.IN1
+B[1] => Add0.IN3
+B[1] => Add0.IN4
+B[1] => Y.IN1
+B[1] => Y.IN1
+B[2] => Add0.IN1
+B[2] => Add0.IN2
+B[2] => Y.IN1
+B[2] => Y.IN1
+B[3] => V.IN1
+B[3] => Add0.IN6
+B[3] => Y.IN1
+B[3] => V.IN1
+Y[0] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+N <= Y.DB_MAX_OUTPUT_PORT_TYPE
+C <= C.DB_MAX_OUTPUT_PORT_TYPE
+V <= V.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|alu_controladora|restador_circular:sub_mod
+A[0] => Y.IN0
+A[0] => c1.IN0
+A[0] => c1.IN1
+A[1] => Y.IN0
+A[1] => c2.IN0
+A[1] => c2.IN1
+A[2] => Y.IN0
+A[2] => c3.IN0
+A[2] => c3.IN1
+A[3] => Y.IN0
+A[3] => c4.IN0
+A[3] => c4.IN1
+A[3] => V.IN0
+B[0] => Y.IN1
+B[0] => c1.IN1
+B[0] => c1.IN1
+B[1] => Y.IN1
+B[1] => c2.IN1
+B[1] => c2.IN1
+B[2] => Y.IN1
+B[2] => c3.IN1
+B[2] => c3.IN1
+B[3] => V.IN1
+B[3] => Y.IN1
+B[3] => c4.IN1
+B[3] => c4.IN1
+Y[0] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+N <= Y.DB_MAX_OUTPUT_PORT_TYPE
+C <= c4.DB_MAX_OUTPUT_PORT_TYPE
+V <= V.DB_MAX_OUTPUT_PORT_TYPE
+
+
