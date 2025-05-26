@@ -1,1 +1,1 @@
-Info (10281): Verilog HDL Declaration information at uartRX.sv(5): object "data" differs only in case from object "DATA" in the same scope File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/uartRX.sv Line: 5
+Info (10281): Verilog HDL Declaration information at uartRX.sv(5): object "data" differs only in case from object "DATA" in the same scope File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/uartRX.sv Line: 5

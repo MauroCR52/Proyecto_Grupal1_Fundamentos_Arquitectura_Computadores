@@ -1,33 +1,27 @@
-Analysis & Synthesis report for UART
-Sun May 25 21:25:23 2025
-Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Analysis & Elaboration report for UART
+Sun May 25 22:58:39 2025
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
 ---------------------
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Synthesis Summary
-  3. Analysis & Synthesis Settings
-  4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Port Connectivity Checks: "restador_circular:sub_mod"
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
- 13. Analysis & Synthesis Suppressed Messages
+  2. Analysis & Elaboration Summary
+  3. Parallel Compilation
+  4. Parameter Settings for User Entity Instance: Top-level Entity: |pwm
+  5. Analysis & Elaboration Settings
+  6. Analysis & Elaboration Messages
+  7. Analysis & Elaboration Suppressed Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2018  Intel Corporation. All rights reserved.
+Copyright (C) 2020  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
-and other software and tools, and its AMPP partner logic 
+and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
@@ -37,40 +31,62 @@ the Intel FPGA IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
 Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details.
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun May 25 21:25:23 2025       ;
-; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
-; Revision Name                   ; UART                                        ;
-; Top-level Entity Name           ; alu_controladora                            ;
-; Family                          ; Cyclone V                                   ;
-; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 0                                           ;
-; Total pins                      ; 16                                          ;
-; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 0                                           ;
-; Total DSP Blocks                ; 0                                           ;
-; Total HSSI RX PCSs              ; 0                                           ;
-; Total HSSI PMA RX Deserializers ; 0                                           ;
-; Total HSSI TX PCSs              ; 0                                           ;
-; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 0                                           ;
-; Total DLLs                      ; 0                                           ;
-+---------------------------------+---------------------------------------------+
++-----------------------------------------------------------------------------+
+; Analysis & Elaboration Summary                                              ;
++-------------------------------+---------------------------------------------+
+; Analysis & Elaboration Status ; Successful - Sun May 25 22:58:39 2025       ;
+; Quartus Prime Version         ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                 ; UART                                        ;
+; Top-level Entity Name         ; pwm                                         ;
+; Family                        ; Cyclone V                                   ;
+; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
+; Total registers               ; N/A until Partition Merge                   ;
+; Total pins                    ; N/A until Partition Merge                   ;
+; Total virtual pins            ; N/A until Partition Merge                   ;
+; Total block memory bits       ; N/A until Partition Merge                   ;
+; Total PLLs                    ; N/A until Partition Merge                   ;
+; Total DLLs                    ; N/A until Partition Merge                   ;
++-------------------------------+---------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |pwm ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; MAX_COUNT      ; 1111  ; Unsigned Binary                            ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                             ;
+; Analysis & Elaboration Settings                                                                                           ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CSXFC6D6F31C6     ;                    ;
-; Top-level entity name                                                           ; alu_controladora   ; UART               ;
+; Top-level entity name                                                           ; pwm                ; UART               ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -151,187 +167,62 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 6           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-+----------------------------+-------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                     ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                 ; Library ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------+---------+
-; multiplicador_circular.sv        ; yes             ; User SystemVerilog HDL File  ; C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/multiplicador_circular.sv  ;         ;
-; restador_circular.sv             ; yes             ; User SystemVerilog HDL File  ; C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/restador_circular.sv       ;         ;
-; and_circular_structural.sv       ; yes             ; User SystemVerilog HDL File  ; C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/and_circular_structural.sv ;         ;
-; xor_circular_flags.sv            ; yes             ; User SystemVerilog HDL File  ; C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/xor_circular_flags.sv      ;         ;
-; alu_controladora.sv              ; yes             ; User SystemVerilog HDL File  ; C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv        ;         ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------+---------+
-
-
-+----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary              ;
-+---------------------------------------------+------------+
-; Resource                                    ; Usage      ;
-+---------------------------------------------+------------+
-; Estimate of Logic utilization (ALMs needed) ; 16         ;
-;                                             ;            ;
-; Combinational ALUT usage for logic          ; 20         ;
-;     -- 7 input functions                    ; 0          ;
-;     -- 6 input functions                    ; 12         ;
-;     -- 5 input functions                    ; 2          ;
-;     -- 4 input functions                    ; 5          ;
-;     -- <=3 input functions                  ; 1          ;
-;                                             ;            ;
-; Dedicated logic registers                   ; 0          ;
-;                                             ;            ;
-; I/O pins                                    ; 16         ;
-;                                             ;            ;
-; Total DSP Blocks                            ; 0          ;
-;                                             ;            ;
-; Maximum fan-out node                        ; A[0]~input ;
-; Maximum fan-out                             ; 14         ;
-; Total fan-out                               ; 129        ;
-; Average fan-out                             ; 2.48       ;
-+---------------------------------------------+------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                       ;
-+--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------+------------------------+--------------+
-; Compilation Hierarchy Node           ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                               ; Entity Name            ; Library Name ;
-+--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------+------------------------+--------------+
-; |alu_controladora                    ; 20 (16)             ; 0 (0)                     ; 0                 ; 0          ; 16   ; 0            ; |alu_controladora                                 ; alu_controladora       ; work         ;
-;    |multiplicador_circular:mult_mod| ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |alu_controladora|multiplicador_circular:mult_mod ; multiplicador_circular ; work         ;
-;    |restador_circular:sub_mod|       ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |alu_controladora|restador_circular:sub_mod       ; restador_circular      ; work         ;
-+--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------+------------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+-------------------------------------------------------+
-; Port Connectivity Checks: "restador_circular:sub_mod" ;
-+---------+-------+----------+--------------------------+
-; Port    ; Type  ; Severity ; Details                  ;
-+---------+-------+----------+--------------------------+
-; A[3..2] ; Input ; Info     ; Stuck at GND             ;
-+---------+-------+----------+--------------------------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 20                          ;
-;     normal            ; 20                          ;
-;         3 data inputs ; 1                           ;
-;         4 data inputs ; 5                           ;
-;         5 data inputs ; 2                           ;
-;         6 data inputs ; 12                          ;
-; boundary_port         ; 16                          ;
-;                       ;                             ;
-; Max LUT depth         ; 3.00                        ;
-; Average LUT depth     ; 2.36                        ;
-+-----------------------+-----------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
-+-------------------------------+
-; Analysis & Synthesis Messages ;
-+-------------------------------+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sun May 25 21:25:16 2025
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off UART -c UART
+Info: Running Quartus Prime Analysis & Elaboration
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sun May 25 22:58:32 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off UART -c UART --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file uarttop.sv
-    Info (12023): Found entity 1: uartTOP File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/uartTOP.sv Line: 3
+    Info (12023): Found entity 1: uartTOP File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/uartTOP.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file uartrx.sv
-    Info (12023): Found entity 1: uartRX File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/uartRX.sv Line: 1
+    Info (12023): Found entity 1: uartRX File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/uartRX.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file uarttx.sv
-    Info (12023): Found entity 1: uartTX File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/uartTX.sv Line: 1
+    Info (12023): Found entity 1: uartTX File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/uartTX.sv Line: 1
 Warning (12019): Can't analyze file -- file and_gate.sv is missing
 Warning (12019): Can't analyze file -- file not_gate.sv is missing
 Warning (12019): Can't analyze file -- file dff_custom.sv is missing
 Info (12021): Found 1 design units, including 1 entities, in source file multiplicador_circular.sv
-    Info (12023): Found entity 1: multiplicador_circular File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/multiplicador_circular.sv Line: 1
+    Info (12023): Found entity 1: multiplicador_circular File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/multiplicador_circular.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file restador_circular.sv
-    Info (12023): Found entity 1: restador_circular File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/restador_circular.sv Line: 1
+    Info (12023): Found entity 1: restador_circular File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/restador_circular.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file tb_restador_circular.sv
-    Info (12023): Found entity 1: tb_restador_circular File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/tb_restador_circular.sv Line: 3
+    Info (12023): Found entity 1: tb_restador_circular File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/tb_restador_circular.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file and_circular_structural.sv
-    Info (12023): Found entity 1: and_circular_structural File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/and_circular_structural.sv Line: 1
+    Info (12023): Found entity 1: and_circular_structural File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/and_circular_structural.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file tb_and_circular_structural.sv
-    Info (12023): Found entity 1: tb_and_circular_structural File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/tb_and_circular_structural.sv Line: 3
+    Info (12023): Found entity 1: tb_and_circular_structural File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/tb_and_circular_structural.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file xor_circular_flags.sv
-    Info (12023): Found entity 1: xor_circular_flags File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/xor_circular_flags.sv Line: 1
+    Info (12023): Found entity 1: xor_circular_flags File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/xor_circular_flags.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file tb_xor_circular_flags.sv
-    Info (12023): Found entity 1: tb_xor_circular_flags File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/tb_xor_circular_flags.sv Line: 1
+    Info (12023): Found entity 1: tb_xor_circular_flags File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/tb_xor_circular_flags.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu_controladora.sv
-    Info (12023): Found entity 1: alu_controladora File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv Line: 1
+    Info (12023): Found entity 1: alu_controladora File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file tb_multiplicador_circular.sv
-    Info (12023): Found entity 1: tb_multiplicador_circular File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/tb_multiplicador_circular.sv Line: 3
+    Info (12023): Found entity 1: tb_multiplicador_circular File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/tb_multiplicador_circular.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file alu_controladora_tb.sv
-    Info (12023): Found entity 1: alu_controladora_tb File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora_tb.sv Line: 1
-Info (12127): Elaborating entity "alu_controladora" for the top level hierarchy
-Info (12128): Elaborating entity "and_circular_structural" for hierarchy "and_circular_structural:and_mod" File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv Line: 28
-Info (12128): Elaborating entity "xor_circular_flags" for hierarchy "xor_circular_flags:xor_mod" File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv Line: 38
-Info (12128): Elaborating entity "multiplicador_circular" for hierarchy "multiplicador_circular:mult_mod" File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv Line: 48
-Info (12128): Elaborating entity "restador_circular" for hierarchy "restador_circular:sub_mod" File: C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora.sv Line: 58
-Info (286030): Timing-Driven Synthesis is running
-Info (144001): Generated suppressed messages file C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/output_files/UART.map.smsg
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 36 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 8 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 20 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4833 megabytes
-    Info: Processing ended: Sun May 25 21:25:23 2025
+    Info (12023): Found entity 1: alu_controladora_tb File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/alu_controladora_tb.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file pwm.sv
+    Info (12023): Found entity 1: pwm File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/pwm.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file pwm_tb.sv
+    Info (12023): Found entity 1: pwm_tb File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/pwm_tb.sv Line: 3
+Info (12127): Elaborating entity "pwm" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at pwm.sv(20): truncated value with size 32 to match size of target (4) File: F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/pwm.sv Line: 20
+Info (144001): Generated suppressed messages file F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/output_files/UART.map.smsg
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4766 megabytes
+    Info: Processing ended: Sun May 25 22:58:39 2025
     Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:15
+    Info: Total CPU time (on all processors): 00:00:16
 
 
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in C:/Users/XPC/Desktop/Funda/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/output_files/UART.map.smsg.
++--------------------------------------------+
+; Analysis & Elaboration Suppressed Messages ;
++--------------------------------------------+
+The suppressed messages can be found in F:/Proyectos Quartos/Proyecto_Grupal1_Fundamentos_Arquitectura_Computadores/output_files/UART.map.smsg.
 
 
