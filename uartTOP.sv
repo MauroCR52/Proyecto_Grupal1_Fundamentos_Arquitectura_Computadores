@@ -9,9 +9,11 @@ module uartTOP (
     output reg cts,
     output logic [6:0] seg,        // salida 7 segmentos
     output logic pwm_out,          // salida PWM
-    output reg [7:0] leds,         // LEDs para debug
+    output reg [3:0] leds,         // LEDs para debug
     input wire [3:0] fotoresistencias, // entradas A (codificadas)
-    input wire [1:0] switches          // operación ALU
+    input wire [1:0] switches,          // operación ALU
+	 output logic [3:0] led_flags  // ← NUEVO: LEDs para los flags Z N C V
+
 );
 
     // UART
@@ -82,11 +84,14 @@ module uartTOP (
         .Y(Y),
         .seg(seg)
     );
+	 
+	 assign led_flags = {Z, N, C, V};  // LED[3] = Z, LED[2] = N, LED[1] = C, LED[0] = V
+
 
     // Lógica de control principal
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            leds <= 8'b0;
+            leds <= 4'b0;
             tx_data <= 8'b0;
             tx_start <= 1'b0;
             trigger_tx <= 1'b0;
@@ -100,7 +105,7 @@ module uartTOP (
             // Detección de nuevo byte UART recibido
             prev_rx_valid <= rx_valid;
 				if (rx_valid && !prev_rx_valid) begin
-					 leds <= {Z, N, C, V, rx_data[3:0]}; // ← Flags de la ALU + rx_data
+					 leds <= rx_data[3:0];
 					 tx_data <= rx_data;
 					 B_reg <= rx_data[3:0];   // Captura entrada B para ALU
 					 trigger_tx <= 1'b1;
